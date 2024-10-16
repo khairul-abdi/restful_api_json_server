@@ -8,6 +8,7 @@ const middlewares = jsonServer.defaults();
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'db.json'), 'utf-8'));
 const router = jsonServer.router(data);
 
+console.log("DATA +>",data)
 
 server.use(middlewares);
 
@@ -17,6 +18,7 @@ server.use(
   "/api/*": "/$1",
  })
 );
+
 server.use(router);
 server.listen(3000, () => {
  console.log("JSON Server is running");
